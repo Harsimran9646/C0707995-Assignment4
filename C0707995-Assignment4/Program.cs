@@ -16,12 +16,13 @@ namespace C0707995_Assignment4
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
+            p.Run();
         }
         public void Run() { this.ReadTextFiles(); }
 
         public void ReadTextFiles()
         {
-            using (StreamReader file = new StreamReader("U:/Users/707995/C0707995/beowulf.txt"))
+            using (StreamReader file = new StreamReader("U:/Users/707995/Beowulf.txt"))
             {
                 int counter = 0;
                 string ln;
@@ -30,6 +31,7 @@ namespace C0707995_Assignment4
                 
                 {
                     Console.WriteLine(ln);
+                    counter++;
                     Beowulf.Add(ln);
                 }
                 file.Close();
@@ -37,6 +39,24 @@ namespace C0707995_Assignment4
 
 
             }
+        }
+        public void ProcessArrayList()
+        {
+            foreach (var line in Beowulf) {
+                if (ContainsWord(line.ToString().ToLower(), "sea") && ContainsWord(line.ToString().ToLower(), "fare"))
+                {
+                    Console.WriteLine("line number is: {0}, LineNumber");
+                }
+            }
+        }
+
+        public bool ContainsWord(string line, string word)
+        {
+            if (line.Contains(word) == true)
+            {
+                return true;
+            }
+            return false;
         }
         public int FindNumberOfBlankSapces(string line)
         { 
